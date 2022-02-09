@@ -20,7 +20,10 @@
         </style>
     </head>
     <body>
+
+        <link rel=”stylesheet” type=”text/css” href=”css/sidemenu.css”>       
         <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
+
         <h1>
             <?php 
             echo date("Y/m/d H:i:s") 
@@ -29,18 +32,34 @@
         <h1><?php echo "三密見守りくん"; ?></h1><br>
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-4"><img src="img/missetu.png" width="300" height="300" alt="密接"></div>
-                <div class="col-sm-4"><img src="img/mipei.png" width="300" height="300" alt="密閉"></div>
-                <div class="col-sm-4"><img src="img/misyu.png" width="300" height="300" alt="密集"></div>
-            </div>]
-
+                <div class="col-md-1">
+                    <div class=”subinfo”>
+                    <ul>
+                    <li><a href=”backlight.html”>会議室1</a></li>
+                    <li><a href=”motherboard.html”>会議室2</a></li>
+                    <li><a href=”hdd.html”>会議室3</a></li>
+                    </ul>
+                    </div>
+                </div>
+                <div class="col-md-2"></div>
+                <div class="col-md-2"><img src="img/missetu.png" width="500" height="500" alt="密接"></div>
+                <div class="col-md-1"></div>
+                <div class="col-md-2"><img src="img/misyu.png" width="500" height="500" alt="密集"></div>
+                <div class="col-md-4"></div>
+            </div>
             <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4"><img src="img/yuriko.jpg" alt="yuriko" title="百合子が3密について何か言っている"></div>
-                <div class="col-sm-4"></div>
+                <div class="col-md-5"></div>
+                <div class="col-md-2"><img src="img/mipei.png" width="500" height="500" alt="密閉"></div>
+                <div class="col-md-5"></div>
+            </dv>
+            <div class="row">
+                <div class="col-md-4"></div>
+                <div class="col-md-4"><img src="img/yuriko.jpg" alt="yuriko" title="百合子が3密について何か言っている"></div>
+                <div class="col-md-4"></div>
             </dv>
         </div>
         <br><br>
+
         <?php
         echo "3密よ！";
 
