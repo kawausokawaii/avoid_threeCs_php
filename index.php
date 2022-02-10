@@ -65,7 +65,7 @@
 
         // PHP Data Objects(PDO) Sample Code:
         try {
-            $conn = new PDO("sqlsrv:server = tcp:itmwg08-tm37-dbserver.database.windows.net,1433; Database = ITMwg08_TM37_DB", "kamiya", "{your_password_here}");
+            $conn = new PDO("sqlsrv:server = tcp:itmwg08-tm37-dbserver.database.windows.net,1433; Database = ITMwg08_TM37_DB", "kamiya", "g3Jpy_ktGY");
             $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         catch (PDOException $e) {
@@ -74,13 +74,13 @@
         }
 
         // SQL Server Extension Sample Code:
-        $connectionInfo = array("UID" => "kamiya", "pwd" => "{your_password_here}", "Database" => "ITMwg08_TM37_DB", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
+        $connectionInfo = array("UID" => "kamiya", "pwd" => "g3Jpy_ktGY", "Database" => "ITMwg08_TM37_DB", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
         $serverName = "tcp:itmwg08-tm37-dbserver.database.windows.net,1433";
         $conn = sqlsrv_connect($serverName, $connectionInfo);
 
         //Run the Select query
         printf("Reading data from table: \n");
-        $res = mysqli_query($conn, 'SELECT * FROM Products');
+        $res = mysqli_query($conn, 'SELECT * FROM dbo.CO2Data');
         while ($row = mysqli_fetch_assoc($res))
         {
             var_dump($row);
