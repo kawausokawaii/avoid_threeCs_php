@@ -6,6 +6,11 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta http-equiv="refresh" content="10">
         <title>3密見守りくん</title>
+        <!-- アコーディオンメニュー -->
+        <link rel="stylesheet" href="css/sidemenu.css">
+        <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script type="text/javascript" src="js/script.js"></script>
+
         <!-- BootstrapのCSS読み込み -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <!-- jQuery読み込み -->
@@ -13,7 +18,7 @@
         <!-- BootstrapのJS読み込み -->
         <script src="js/bootstrap.min.js"></script>
         <style>
-            h1 {
+            niko {
                 font-family: "Nico Moji";
             }
         </style>
@@ -24,24 +29,50 @@
         <link rel=”stylesheet” type=”text/css” href=”css/sidemenu.css”>       
         <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
 
-        <h1>
-            <?php 
-            echo date("Y/m/d H:i:s") 
-            ?>
-        </h1>
-        <h1><?php echo "三密見守りくん"; ?></h1><br>
-        <div class="container-fluid">
+        <div class="container-fluid bg-secondary">
+
+            <h1>
+                <niko>
+                <?php 
+                date_default_timezone_set('Asia/Tokyo');
+                echo date("Y/m/d H:i:s") 
+                ?>
+                </niko>
+            </h1>
+
+            <h1>
+                <niko>
+                    <?php echo "三密見守りくん"; ?>
+                </niko>
+            </h1><br>
+
             <div class="row">
-                <div class="col-md-1">
-                    <div class=”subinfo”>
-                    <ul>
-                    <li><a href=”backlight.html”>会議室1</a></li>
-                    <li><a href=”motherboard.html”>会議室2</a></li>
-                    <li><a href=”hdd.html”>会議室3</a></li>
+                <div class="col-md-2">                    
+                <!-- Contenedor -->
+                <ul id="accordion" class="accordion">
+                    <li>
+                    <div class="link"><i class="fa fa-paint-brush"></i>A会議室<i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        <li><a href="#">一覧</a></li>
+                        <li><a href="#">詳細</a></li>
                     </ul>
-                    </div>
+                    </li>
+                    <li>
+                    <div class="link"><i class="fa fa-mobile"></i>B会議室<i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        <li><a href="#">一覧</a></li>
+                        <li><a href="#">詳細</a></li>
+                    </ul>
+                    </li>
+                    <li><div class="link"><i class="fa fa-globe"></i>C会議室<i class="fa fa-chevron-down"></i></div>
+                    <ul class="submenu">
+                        <li><a href="#">一覧</a></li>
+                        <li><a href="#">詳細</a></li>
+                    </ul>
+                    </li>
+                </ul>
                 </div>
-                <div class="col-md-2"></div>
+                <div class="col-md-1"></div>
                 <div class="col-md-2"><img src="img/missetu.png" width="500" height="500" alt="密接"></div>
                 <div class="col-md-1"></div>
                 <div class="col-md-2"><img src="img/misyu.png" width="500" height="500" alt="密集"></div>
