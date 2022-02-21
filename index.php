@@ -111,5 +111,7 @@
         }
 
         ?>
+
+    <iframe src="https://bunkakai-grafana.azurewebsites.net/d-solo/-H9M00fnk/test?orgId=1&from=1645432439100&to=1645432559246&panelId=2" width="450" height="200" frameborder="0"></iframe>
     </body>
 </html>
