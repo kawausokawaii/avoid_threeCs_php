@@ -95,23 +95,16 @@
         echo "3密よ！";
 
         // PHP Data Objects(PDO) Sample Code:
-        try {
-            $conn = new PDO("sqlsrv:server = tcp:itmwg08-tm37-dbserver.database.windows.net,1433; Database = ITMwg08_TM37_DB", "kamiya", "g3Jpy_ktGY");
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+        $con=mysqli_init();
+        // mysqli_ssl_set($con, NULL, NULL, {ca-cert filename}, NULL, NULL); 
+        mysqli_real_connect($con, "bunkakai-db.mysql.database.azure.com", "dbadmin@bunkakai-db", "OP8dev_flkU", "bunkakai", 3306);
+        if (mysqli_connect_errno($con)) {
+            die('Failed to connect to MySQL: '.mysqli_connect_error());
         }
-        catch (PDOException $e) {
-            print("Error connecting to SQL Server.");
-            die(print_r($e));
-        }
-
-        // SQL Server Extension Sample Code:
-        $connectionInfo = array("UID" => "kamiya", "pwd" => "g3Jpy_ktGY", "Database" => "ITMwg08_TM37_DB", "LoginTimeout" => 30, "Encrypt" => 1, "TrustServerCertificate" => 0);
-        $serverName = "tcp:itmwg08-tm37-dbserver.database.windows.net,1433";
-        $conn = sqlsrv_connect($serverName, $connectionInfo);
 
         //Run the Select query
         printf("Reading data from table: \n");
-        $res = mysqli_query($conn, 'SELECT * FROM dbo.CO2Data');
+        $res = mysqli_query($con, 'SELECT * FROM kamiya_test');
         while ($row = mysqli_fetch_assoc($res))
         {
             var_dump($row);
