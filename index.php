@@ -86,7 +86,7 @@
         $port = "5432";
 
         // Initialize connection object.
-        $connection = pg_connect("host=$host dbname=$database user=$user password=$password port=$port")
+        $connection = pg_connect("host=$host dbname=$database user=$user password=$password port=$port sslmode=require")
         or die("Failed to create connection to database: ". pg_last_error(). "<br/>");
 
         print "Successfully created connection to database.<br/>";
