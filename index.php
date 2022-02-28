@@ -100,7 +100,7 @@
             or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
         while ($row = pg_fetch_row($result_set))
         {
-            print "Data row = ($row). <br/>";
+            print "$row[0]<br/>";
         }
 
         // Free result_set
