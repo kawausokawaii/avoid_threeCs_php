@@ -98,8 +98,11 @@
         $query = "SELECT * from co2 ORDER BY send_time DESC";
         $result_set = pg_query($connection, $query) 
             or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
-        $row = pg_fetch_row($result_set)
-        print "$row[1]<br/>";
+        while ($row = pg_fetch_row($result_set))
+        {
+            print "$row[1]<br/>";
+            break;
+        }
 
         // Free result_set
         pg_free_result($result_set);
