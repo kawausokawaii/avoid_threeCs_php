@@ -83,10 +83,12 @@
         $database = "bunkakai-postgre-db";
         $user = "dbadmin";
         $password = "OP8dev_flkU";
+        $port = "5432";
 
         // Initialize connection object.
-        $connection = pg_connect("host=$host dbname=$database user=$user password=$password") 
-            or die("Failed to create connection to database: ". pg_last_error(). "<br/>");
+        $connection = pg_connect("host=$host dbname=$database user=$user password=$password port=$port")
+        or die("Failed to create connection to database: ". pg_last_error(). "<br/>");
+
         print "Successfully created connection to database.<br/>";
 
         // Perform some SQL queries over the connection.
