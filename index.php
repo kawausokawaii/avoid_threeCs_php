@@ -31,12 +31,42 @@
         </h2>
     </div>
 
+    <?php
+        // Initialize connection variables.
+        $host = "bunkakai-postgre-db.postgres.database.azure.com";
+        $database = "bunkakai-postgre-db";
+        $user = "dbadmin";
+        $password = "OP8dev_flkU";
+        $port = "5432";
+
+        // Initialize connection object.
+        /*$connection = pg_connect("host=$host dbname=$database user=$user password=$password port=$port sslmode=require")
+        or die("Failed to create connection to database: ". pg_result_error(). "<br/>");*/
+
+        $connection = pg_connect("host=bunkakai-postgre-db.postgres.database.azure.com port=5432 dbname=bunkakai user=dbadmin password=OP8dev_flkU sslmode=disable")
+        or die("Failed to create connection to database: ". pg_result_error(). "<br/>");
+        
+    ?>
+
     <section class="strips">
 
         <article class="strips__strip">
             <div class="strip__content">
                 <h1><niko>密閉</niko></h1>
-                <h1 class="strip__title" data-name="Lorem">100ppm</h1>
+                <h1 class="strip__title" data-name="Lorem">
+                    <?php
+                        // Perform some SQL queries over the connection.
+                        $query = "SELECT * from co2 ORDER BY send_time DESC";
+                        $result_set = pg_query($connection, $query) 
+                            or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
+                        while ($row = pg_fetch_row($result_set))
+                        {
+                            print "$row[1]<br/>";
+                            break;
+                        }
+                    ?>
+                    
+                ppm</h1>
                 <div class="strip__inner-text">
                     <h2>Co2</h2>
                     <iframe src="https://bunkakai-grafana.azurewebsites.net/d-solo/-H9M00fnk/test?orgId=1&from=1645432439100&to=1645432559246&panelId=2" width="450" height="200" frameborder="0"></iframe>
@@ -78,32 +108,6 @@
     </h1>
 
     <?php
-        // Initialize connection variables.
-        $host = "bunkakai-postgre-db.postgres.database.azure.com";
-        $database = "bunkakai-postgre-db";
-        $user = "dbadmin";
-        $password = "OP8dev_flkU";
-        $port = "5432";
-
-        // Initialize connection object.
-        /*$connection = pg_connect("host=$host dbname=$database user=$user password=$password port=$port sslmode=require")
-        or die("Failed to create connection to database: ". pg_result_error(). "<br/>");*/
-
-        $connection = pg_connect("host=bunkakai-postgre-db.postgres.database.azure.com port=5432 dbname=bunkakai user=dbadmin password=OP8dev_flkU sslmode=disable")
-        or die("Failed to create connection to database: ". pg_result_error(). "<br/>");
-
-        print "Successfully created connection to database.<br/>";
-
-        // Perform some SQL queries over the connection.
-        $query = "SELECT * from co2 ORDER BY send_time DESC";
-        $result_set = pg_query($connection, $query) 
-            or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
-        while ($row = pg_fetch_row($result_set))
-        {
-            print "$row[1]<br/>";
-            break;
-        }
-
         // Free result_set
         pg_free_result($result_set);
 
