@@ -95,13 +95,11 @@
         print "Successfully created connection to database.<br/>";
 
         // Perform some SQL queries over the connection.
-        $query = "SELECT * from co2";
+        $query = "SELECT * from co2 ORDER BY send_time DESC";
         $result_set = pg_query($connection, $query) 
             or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
-        while ($row = pg_fetch_row($result_set))
-        {
-            print "$row[0]<br/>";
-        }
+        $row = pg_fetch_row($result_set)
+        print "$row[1]<br/>";
 
         // Free result_set
         pg_free_result($result_set);
