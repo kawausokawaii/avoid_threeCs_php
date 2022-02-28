@@ -89,7 +89,7 @@
         /*$connection = pg_connect("host=$host dbname=$database user=$user password=$password port=$port sslmode=require")
         or die("Failed to create connection to database: ". pg_result_error(). "<br/>");*/
 
-        $connection = pg_connect("host=bunkakai-postgre-db.postgres.database.azure.com port=5432 dbname=bunkakai-postgre-db user=dbadmin password=OP8dev_flkU")
+        $connection = pg_connect("host=bunkakai-postgre-db.postgres.database.azure.com port=5432 dbname=bunkakai user=dbadmin password=OP8dev_flkU sslmode=disable")
         or die("Failed to create connection to database: ". pg_result_error(). "<br/>");
 
         print "Successfully created connection to database.<br/>";
