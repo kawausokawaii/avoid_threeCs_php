@@ -73,7 +73,7 @@
         <article class="strips__strip">
             <div class="strip__content">
                 <h1><niko>密集</niko></h1>
-                <h1 class="strip__title" data-name="Ipsum">3/5人</h1>
+                <h1 class="strip__title" data-name="Ipsum">3/3人</h1>
                 <div class="strip__inner-text">
                     <h2>Co2</h2>
                     <iframe src="https://bunkakai-grafana.azurewebsites.net/d-solo/-H9M00fnk/test?orgId=1&from=1645432439100&to=1645432559246&panelId=2" width="450" height="200" frameborder="0"></iframe>
