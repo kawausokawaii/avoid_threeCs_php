@@ -123,6 +123,10 @@
         <i class="fa fa-close strip__close"><h1>×</h1></i>
     </section>
 
+    <?php if($co2 > 1000) :?><h1 class="blink">CO2濃度が高くなっています。換気してください</h1> <?php endif;?>
+    <?php if($count > 3) :?><h1 class="blink">会議室の人数を調整してください</h1> <?php endif;?>
+    <?php if($decibel > 80) :?>    <h1 class="blink">会話の音量を下げてください</h1> <?php endif;?>
+
     <!-- 時間の表示 -->
     <h1>
         <niko>
