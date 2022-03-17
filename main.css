@@ -1,25 +1,31 @@
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  font-size: 62.5%;/*rem算出をしやすくするために*/
+  background-image:url("pastel_00005.jpg");
+}
+
 body {
-    background-color: #FCF8F5;
+    /* background-color: #FCF8F5; */
     display: flex;
     flex-direction: column;
     font-family: sans-serif;
     align-items: center;
+    color: #fff;
 }
 
 .c {
     text-align: center;
   }
-  table.c,
-  div.c,
-  p.c {
-    text-align: center;
-    margin: 0px auto;
-    /* background-color: #ffcccc;*/
-  }
 
-  h2 {
-    font-size: 50px;
-  }
+h2 {
+  font-size: 50px;
+}
+
+h3 {
+  font-size: 70px;
+  text-shadow:1px 1px 0 rgb(131, 65, 236),-1px 1px 0 rgb(131, 65, 236),1px -1px 0 rgb(131, 65, 236),-1px -1px 0 rgb(131, 65, 236);
+}
 
 @import url('https://fonts.googleapis.com/css?family=Sawarabi+Gothic');
 
@@ -36,7 +42,7 @@ niko {
     box-sizing: border-box;
   }
   .strips {
-    min-height: 50vh;
+    min-height: 55vh;
     text-align: center;
     overflow: hidden;
     color: white;
@@ -232,59 +238,6 @@ niko {
       transform: translate3d(0,0,0);
     }
   }
-
-
-/* ヘッダー */
-.navigation{
-    /* flexboxで要素を真ん中に指定 */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 80%;
-    text-align: center;
-    font-family: sans-serif;
-    font-size: 17px;
-  }
-  .navigation ul {
-    width: 100%;
-  }
-  .button{
-    display: block;
-    padding:10px;
-    background:white;
-    width:33%;
-    float:left;
-    /* カーソルを離した際のアニメーションの速度調整 */
-    transition:.2s all;
-    box-shadow: 0px 0px 0px 0px rgba(0,0,0,0) inset;
-  }
-  .button p {
-    height: 10px;
-    font-weight: 300;
-  }
-  .button a {
-    color:#333333;
-    /* リンク指定した要素のスタイルを削除 */
-    text-decoration:none;
-  }
-  .navigation:hover .button{
-    /* ナビゲーションをマウスオーバーした際のアニメーションの動きを指定 */
-    opacity:.5;
-    /* 全てのボタンが少し小さくなる */
-    transform: scale(1);
-  }
-  .navigation:hover .button:hover{
-    transition: .5s;
-    /* hover時の速度調整 */
-    transform:scale(.8);
-    /* hoverしたボタンのみサイズを拡大する指定 */
-    opacity:1;
-    /* hoverするとボタンが凹むように影を指定 */
-    box-shadow: 2px 2px 3px 3px rgba(0,0,0,0.6) inset;
-  }
-  .navigation:hover .button:hover > p {
-    font-weight: bold;
-  }
   
   /* popup */
 
@@ -355,4 +308,66 @@ niko {
 @keyframes blink {
 	0% {opacity: 0;}
 	100% {opacity: 1;}
+}
+
+/* 会議室選択 */
+
+/*まずはお決まりのボックスサイズ算出をborer-boxに */
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: inherit;
+  box-sizing: inherit;
+}
+
+.btn,
+a.btn,
+button.btn {
+  font-size: 1.6rem;
+  font-weight: 700;
+  line-height: 1.5;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+
+a.btn-border {
+  border: 2px solid #000;
+  border-radius: 0;
+  background: #fff;
+}
+
+a.btn-border:hover {
+  color: #fff;
+  background: #000;
+}
+
+a.btn-border2 {
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 0;
+  background: #212529;
+}
+
+a.btn-border2:hover {
+  color: #000;
+  background: #fff;
+}
+
+
+inline{
+  display: inline-block;
 }

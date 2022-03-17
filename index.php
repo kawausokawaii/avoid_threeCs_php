@@ -11,27 +11,19 @@
     <link rel="stylesheet" href="main.css">
     <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
 
-    <div class="navigation">
-    <!-- 会議室ナビゲーション -->
-        <ul>
-            <li class="button">
-            <p><a href="index.php">会議室A</a></p>
-            </li>
-            <li class="button">
-            <p><a href="b_conference_room.php">会議室B</a></p>
-            </li>
-            <li class="button">
-            <p><a href="c_conference_room.php">会議室C</a></p>
-            </li>
-        </ul>
+    <!-- 会議室見出し -->
+    <div class="mplus">
+        <h3>
+            三密みまもりくん <img src="mimamori.png" alt="見守りくん" title="見守りくん"　width="90" height="90">
+        </h3>
     </div>
 
-    <!-- 会議室見出し -->
-    <div class="c">
-        <h2>
-            会議室A
-        </h2>
-    </div>
+    <inline>
+        <a href="index.php" class="btn btn-border2">会議室A</a>
+        <a href="b_conference_room.php" class="btn btn-border">会議室B</a>
+        <a href="c_conference_room.php" class="btn btn-border">会議室C</a>
+    </inline>
+    <br><br><br>
 
     <?php
         // DB接続情報
@@ -67,6 +59,9 @@
         // 3つの密を満たしたらポップアップを表示する
         if($co2 > 1000 && $count > 3 && $decibel > 80) :
     ?>
+            <!-- 音を鳴らす -->
+            <audio src="Warning-Siren05-01(Fast-Mid).mp3" autoplay></audio>
+
             <div class="popup" id="js-popup">
                 <div class="popup-inner">
                     <div class="close-btn" id="js-close-btn"><i class="fas fa-times"></i></div>
