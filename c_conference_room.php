@@ -12,9 +12,18 @@
     <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet">
 
     <!-- 会議室見出し -->
-    <div class="c">
+    <div class="mplus">
         <h3>
-            三密みまもりくん <img src="mimamori.png" alt="見守りくん" title="見守りくん"　width="90" height="90">
+            <a onClick="sound()">
+                三密みまもりくん
+                <div class="img_wrap" style="display: inline-block; _display: inline;">
+                    <img src="mimamori.png" alt="見守りくん" title="見守りくん" width="90" height="90" style="display: block; margin: auto;">
+                </div>
+            </a>
+            <!-- 音声ファイルの読み込み -->
+            <audio id="sound-file" preload="auto">
+                <source src="onegai.mp3" type="audio/mp3">
+            </audio>
         </h3>
     </div>
 
@@ -62,7 +71,7 @@
         if($co2 > 1000 && $count > 3 && $decibel > 80) :
     ?>
             <!-- 音を鳴らす -->
-            <audio src="Warning-Siren05-01(Fast-Mid).mp3" autoplay></audio>
+            <audio src="mitsu.mp3" autoplay></audio>
 
             <div class="popup" id="js-popup">
                 <div class="popup-inner">
@@ -71,6 +80,11 @@
                 </div>
                 <div class="black-background" id="js-black-bg"></div>
             </div>
+    <?php
+        elseif($decibel > 80) :
+    ?>
+        <!-- 音を鳴らす -->
+        <audio src="socialdistance.mp3" autoplay></audio>
     <?php
         endif;
     ?>
