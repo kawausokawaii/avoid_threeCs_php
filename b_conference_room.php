@@ -51,8 +51,8 @@
         $decibel = 0;
 
         // CO2の取得
-        $query = "SELECT * from co2 ORDER BY send_time DESC";
-        $result_set = pg_query($connection, $query) 
+        $query1 = "SELECT * from co2 where room = 'B' ORDER BY send_time DESC";
+        $result_set = pg_query($connection, $query1) 
             or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
         while ($row = pg_fetch_row($result_set))
         {
@@ -60,9 +60,32 @@
             break;
         }
 
-        // 人数の取得(残件)
+        // 人数の取得
+        $query2 = "SELECT * from beacon where beacon_id = 'BBBBB' ORDER BY send_time DESC";
+        $result_set = pg_query($connection, $query2) 
+            or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
+        $id_list = [];
+        $now = time();
+        while ($row = pg_fetch_row($result_set))
+        {
+            // 40秒以内に在室していた場合カウント
+            if($now - $row[1] < 40) :
+                $count++;
+                array_push($id_list, $row[0]);
+            endif;
+        }
 
-        // 音量の取得(残件)
+        // 音量の取得
+        $query3 = "SELECT * from decibel where room = 'B' ORDER BY send_time DESC";
+        $result_set = pg_query($connection, $query3) 
+            or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
+        while ($row = pg_fetch_row($result_set))
+        {
+            $decibel = round($row[1]);
+            break;
+        }
+
+        // debug用
         $co2 = 1;
         $count = 1;
         $decibel = 1000000;
@@ -101,7 +124,7 @@
                 </h1>
                 <div class="strip__inner-text">
                     <h2>Co2</h2>
-                    <iframe src="https://bunkakai-grafana.azurewebsites.net/d-solo/-H9M00fnk/test?orgId=1&from=1645432439100&to=1645432559246&panelId=2" width="450" height="200" frameborder="0"></iframe>
+                    <iframe src="https://bunkakai-grafana.azurewebsites.net/d-solo/l0GFPCPnk/bunkakai?orgId=1&from=1648014833224&to=1648017794637&panelId=2" width="450" height="200" frameborder="0"></iframe>
                 </div>
             </div>
         </article>
@@ -112,9 +135,12 @@
                 <h1><niko>密集</niko></h1>
                 <h1 class="strip__title" data-name="Ipsum"><?php echo "$count/2人";?></h1>
                 <div class="strip__inner-text">
-                    <h2>在室者一覧</h2>
-                    A<br>
-                    B
+                <h2>在室者一覧</h2>
+                    <?php
+                        foreach ($id_list as $value){
+                            echo $value. "<br>";
+                          };
+                    ?>
                 </div>
             </div>
         </article>
