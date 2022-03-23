@@ -17,7 +17,7 @@
             <a onClick="sound()">
                 三密みまもりくん
                 <div class="img_wrap" style="display: inline-block; _display: inline;">
-                    <img src="mimamori.png" alt="見守りくん" title="見守りくん" width="90" height="90" style="display: block; margin: auto;">
+                    <img src="eye14_circle2.png" alt="見守りくん" title="見守りくん" width="90" height="90" style="display: block; margin: auto;">
                 </div>
             </a>
             <!-- 音声ファイルの読み込み -->

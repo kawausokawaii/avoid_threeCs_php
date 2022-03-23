@@ -17,7 +17,7 @@
             <a onClick="sound()">
                 三密みまもりくん
                 <div class="img_wrap" style="display: inline-block; _display: inline;">
-                    <img src="mimamori.png" alt="見守りくん" title="見守りくん" width="90" height="90" style="display: block; margin: auto;">
+                    <img src="eye14_circle2.png" alt="見守りくん" title="見守りくん" width="90" height="90" style="display: block; margin: auto;">
                 </div>
             </a>
             <!-- 音声ファイルの読み込み -->
@@ -51,8 +51,8 @@
         $decibel = 0;
 
         // CO2の取得
-        $query = "SELECT * from co2 ORDER BY send_time DESC";
-        $result_set = pg_query($connection, $query) 
+        $query1 = "SELECT * from co2 where room = 'A' ORDER BY send_time DESC";
+        $result_set = pg_query($connection, $query1) 
             or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
         while ($row = pg_fetch_row($result_set))
         {
@@ -60,10 +60,25 @@
             break;
         }
 
-        // 人数の取得(残件)
+        // 人数の取得
+        $query2 = "SELECT * from beacon where beacon_id = 'AAAAA' ORDER BY send_time DESC";
+        $result_set = pg_query($connection, $query2) 
+            or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
+        while ($row = pg_fetch_row($result_set))
+        {
+            $count = $row[1];
+            break;
+        }
 
-        // 音量の取得(残件)
-
+        // 音量の取得
+        $query3 = "SELECT * from decibel where room = 'A' ORDER BY send_time DESC";
+        $result_set = pg_query($connection, $query3) 
+            or die("Encountered an error when executing given sql statement: ". pg_last_error(). "<br/>");
+        while ($row = pg_fetch_row($result_set))
+        {
+            $decibel = round($row[1]);
+            break;
+        }
 
         // 3つの密を満たしたらポップアップを表示する
         if($co2 > 1000 && $count > 3 && $decibel > 80) :
@@ -98,7 +113,7 @@
                 </h1>
                 <div class="strip__inner-text">
                     <h2>Co2</h2>
-                    <iframe src="https://bunkakai-grafana.azurewebsites.net/d-solo/-H9M00fnk/test?orgId=1&from=1645432439100&to=1645432559246&panelId=2" width="450" height="200" frameborder="0"></iframe>
+                    <iframe src="https://bunkakai-grafana.azurewebsites.net/d-solo/tnH92CP7z/bunkakai?orgId=1&from=1648014738804&to=1648016538804&panelId=2" width="450" height="200" frameborder="0"></iframe>
                 </div>
             </div>
         </article>
